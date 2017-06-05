@@ -1,10 +1,47 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-2 well" id="playlist">
-			<div id="" class="text-center">
+			<!-- <div id="" class="text-center">
 				<img src="http://localhost/covercave/public/img/loading.gif" style="display:block;margin:0 auto;margin-top:6%">
 				<p style="color:#FFF">Loading playlists...</p>
-			</div>
+			</div> -->
+			
+			<ul class="list-group" id="playlist-items">
+            <?php
+
+            $songs = array("Fear of the Dark", "Enter Sandman", "Raining Blood", "Highway to Hell", "Bring me to Life", "Toxicity", "The Beautiful People", "Roots Bloody Roots");
+
+            $cont = 0;
+            while($cont < 8){
+              echo '<li class="list-group-item"><span class="glyphicon glyphicon-music icone-item-playlist"></span> ' . $songs[$cont] . '</li>';
+              $cont++;
+            }
+            ?>
+          </ul>
+
+          <div id="now-playing">
+            <img src="http://img.youtube.com/vi/2LlYqV-zKIU/mqdefault.jpg" class="img-rounded" id="imgNowPlaying">
+            <div id="info-now-playing">
+              <span id="txtNowPlaying">Now playing...</span><br>
+              <span id="txtSongPlaying"><b>Laid to Rest</b> by Hungry Covers</span>
+            </div>
+          </div>
+
+          <div class="container text-center">
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </button>
+          </div>
+			
 		</div>
 		<div class="col-md-8" id="videoContainer">
 			<img src="http://localhost/covercave/public/img/bg169.jpg" class="img-responsive img-rounded">

@@ -1,5 +1,5 @@
 $(function() {
-  $('.selectpicker').selectpicker();
+  //$('.selectpicker').selectpicker();
 
   $('.video-info').on('click', function(){
   	$('#modalVideo').modal('show');

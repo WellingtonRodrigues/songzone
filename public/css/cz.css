@@ -224,3 +224,8 @@ iframe {
 	opacity: 0.8;
 	display:none;
 }
+
+#playlist{
+	position:fixed;
+	left:0;top:80px;
+}

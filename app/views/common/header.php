@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
     <link rel="shortcut icon" href="img/ico.png" />
-    <title>CoverZone</title>
+    <title>SongZone</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

@@ -1,6 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-2 well" id="playlist">
+		<div class="col-md-2">
+		<div id="playlist" class="col-md-2 well">
 			<!-- <div id="" class="text-center">
 				<img src="http://localhost/covercave/public/img/loading.gif" style="display:block;margin:0 auto;margin-top:6%">
 				<p style="color:#FFF">Loading playlists...</p>
@@ -40,6 +41,7 @@
             <button type="button" class="btn btn-default" aria-label="Left Align">
               <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
             </button>
+          </div>
           </div>
 			
 		</div>

@@ -1,3 +1,6 @@
+//Playlist global variables
+nowPlaying = 0;
+	
 $(function() {
 	loadPlaylist();	
 	
@@ -6,7 +9,22 @@ $(function() {
 		  cursor: "move",
 		  opacity: 0.8,
 		  revert: true,
-		  tolerance: "pointer"
+		  tolerance: "pointer",
+		  stop: function(){
+			  var videos = [];
+			  $.map($(this).find("li"), function(el){ // returns items in the current order
+				 console.log("Index: " + $(el).index() + " - ID: " + el.id);
+				 
+				 videos.push(el.id.split("_")[1]); // removes the "video-id" part of the id
+			  });
+			  $.ajax({
+					type:"POST",
+					data:{
+						videos:videos
+					},
+					url:"http://localhost/songzone/public/services/updatePlaylist"
+				});
+		  }
 	});
 });
 
@@ -36,7 +54,7 @@ function loadPlaylist(){
 			for(var i in playlist) {
 				var video = playlist[i];
 				$("#playlist-items").append(
-						'<li class="list-group-item" onclick="play(' + video.video_id + ');"><span class="glyphicon glyphicon-music icone-item-playlist"></span> ' + video.song_name + '</li>'
+					'<li class="list-group-item" id="video-id_' + video.video_id + '" onclick="play(' + video.video_id + ');"><span class="glyphicon glyphicon-music icone-item-playlist"></span> ' + video.song_name + '</li>'
 				)
 			}
 		}

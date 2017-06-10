@@ -2,6 +2,9 @@
 
 class Home extends Controller{
 	function index(){
+		session_start();
+		if(!isset($_SESSION["playlist"])) $_SESSION["playlist"] = array("videos" => array(), "nowPlaying" => 0);
+		
 		require_once '../app/models/VideoDAO.php';
 		$videoDAO = new VideoDAO();
 		

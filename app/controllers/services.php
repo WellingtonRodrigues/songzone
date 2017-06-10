@@ -62,7 +62,7 @@ class Services extends Controller{
 		$dao = new VideoDAO();
 		
 		$playlist = array();
-		foreach ($_SESSION["playlist"] as $videoID){
+		foreach ($_SESSION["playlist"]["videos"] as $videoID){
 			array_push($playlist, $dao->getVideo($videoID));
 		}
 		
@@ -72,8 +72,17 @@ class Services extends Controller{
 	function addToPlaylist(){
 		session_start();
 		$videoID = $_POST["videoID"];
-		//TODO: check videoID;
+		//TODO: check videoID
 		
-		array_push($_SESSION["playlist"], $videoID);
+		array_push($_SESSION["playlist"]["videos"], $videoID);
+	}
+	
+	function updatePlaylist(){
+		session_start();
+		$videos = $_POST["videos"];
+		
+		//TODO: check videos
+		
+		$_SESSION["playlist"]["videos"] = $videos;
 	}
 }

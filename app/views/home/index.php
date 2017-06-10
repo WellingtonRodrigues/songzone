@@ -2,29 +2,18 @@
 	<div class="row">
 		<div class="col-md-2">
 		<div id="playlist" class="col-md-2 well">
-			<!-- <div id="" class="text-center">
-				<img src="http://localhost/covercave/public/img/loading.gif" style="display:block;margin:0 auto;margin-top:6%">
-				<p style="color:#FFF">Loading playlists...</p>
-			</div> -->
-			
-			<ul class="list-group" id="playlist-items">
-            <?php
-
-            $songs = array("Fear of the Dark", "Enter Sandman", "Raining Blood", "Highway to Hell", "Bring me to Life", "Toxicity", "The Beautiful People", "Roots Bloody Roots");
-
-            $cont = 0;
-            while($cont < 8){
-              echo '<li class="list-group-item"><span class="glyphicon glyphicon-music icone-item-playlist"></span> ' . $songs[$cont] . '</li>';
-              $cont++;
-            }
-            ?>
-          </ul>
-
+		
+			<div class="text-center">
+				<span id="playlist-title">Playlist</span>
+			</div>
+			<ul class="list-group" id="playlist-items"></ul>
+          
+          <hr>
           <div id="now-playing">
             <img src="http://img.youtube.com/vi/2LlYqV-zKIU/mqdefault.jpg" class="img-rounded" id="imgNowPlaying">
             <div id="info-now-playing">
               <span id="txtNowPlaying">Now playing...</span><br>
-              <span id="txtSongPlaying"><b>Laid to Rest</b> by Hungry Covers</span>
+              <span class="txtSongChannelName" id="txtSongPlaying"><b>Laid to Rest</b></span><span class="txtSongChannelName"> by </span><span class="txtSongChannelName" id="txtChannelName">Hungry Covers</span>
             </div>
           </div>
 
@@ -82,15 +71,20 @@
         <p>Showing results for: <strong>Featured</strong></p>
           <?php
             foreach ($data["featuredVideos"] as $video){
-              echo "<div class='video-info well col-md-3'>
+            	echo "<div class='video-info well col-md-3'>
                       <img src='http://img.youtube.com/vi/" . $video->getProviderVideoId() . "/mqdefault.jpg' class='img-rounded'>
                       <p class='p-music'><strong>" . $video->getSongName() . "</strong></p>
                       <p class='p-artist'>" . $video->getArtistName() . "</p>
-                      <div class='btns-play-add'>
-                        <button type='button' class='btn btn-default'>
+                      <div class='btns-play-add dropdown'>
+                        <button type='button' class='btn btn-default dropdown-toggle btn-add-to-playlist' id='btn-add-" . $video->getId() ."' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
                           <span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
-                        </button>
-                        <button type='button' class='btn btn-default' onclick='play(" . $video->getId() . ")'>
+                        </button>" .
+            	
+            	                        '<ul class="dropdown-menu" aria-labelledby="btn-add-' . $video->getId() .'">
+						    <li><a href="#" onclick="addToPlaylist(' . $video->getId() .')">Add to Playlist</a></li>
+						  </ul>' .
+            	
+            							  "<button type='button' class='btn btn-default btn-play-video' onclick='play(" . $video->getId() . ")'>
                           <span class='glyphicon glyphicon-play' aria-hidden='true'></span>
                         </button>
                       </div>

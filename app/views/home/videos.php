@@ -10,11 +10,16 @@ foreach ($data["videos"] as $video){
                       <img src='http://img.youtube.com/vi/" . $video->getProviderVideoId() . "/mqdefault.jpg' class='img-rounded'>
                       <p class='p-music'><strong>" . $video->getSongName() . "</strong></p>
                       <p class='p-artist'>" . $video->getArtistName() . "</p>
-                      <div class='btns-play-add'>
-                        <button type='button' class='btn btn-default'>
+                      <div class='btns-play-add dropdown'>
+                        <button type='button' class='btn btn-default dropdown-toggle btn-add-to-playlist' id='btn-add-" . $video->getId() ."' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
                           <span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
-                        </button>
-                        <button type='button' class='btn btn-default' onclick='play(" . $video->getId() . ")'>
+                        </button>" .
+                      		
+                      	'<ul class="dropdown-menu" aria-labelledby="btn-add-' . $video->getId() .'">
+						    <li><a href="#" onclick="addToPlaylist(' . $video->getId() .')">Add to Playlist</a></li>
+						  </ul>' .
+                      		
+                        "<button type='button' class='btn btn-default btn-play-video' onclick='play(" . $video->getId() . ")'>
                           <span class='glyphicon glyphicon-play' aria-hidden='true'></span>
                         </button>
                       </div>

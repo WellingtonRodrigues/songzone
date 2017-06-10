@@ -54,4 +54,26 @@ class Services extends Controller{
 			exit;
 		}
 	}
+	
+	function getPlaylist(){
+		session_start();
+		
+		require_once '../app/models/VideoDAO.php';
+		$dao = new VideoDAO();
+		
+		$playlist = array();
+		foreach ($_SESSION["playlist"] as $videoID){
+			array_push($playlist, $dao->getVideo($videoID));
+		}
+		
+		echo json_encode($playlist);
+	}
+	
+	function addToPlaylist(){
+		session_start();
+		$videoID = $_POST["videoID"];
+		//TODO: check videoID;
+		
+		array_push($_SESSION["playlist"], $videoID);
+	}
 }

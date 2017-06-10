@@ -118,6 +118,24 @@ class VideoDAO{
 		}
 	}
 	
+	function getVideo($videoID){
+		require_once '../app/core/Database.php';
+		require_once 'VideoDTO.php';
+		
+		$db = Database::getConnection();
+		
+		try {
+			$query = $db->prepare("SELECT * FROM `video` INNER JOIN `song` ON video.song_id = song.song_id WHERE video_id = :videoID");
+			$query->bindParam(":videoID", $videoID, PDO::PARAM_INT);
+			
+			$query->execute();
+			return $query->fetchAll(PDO::FETCH_ASSOC)[0];
+		
+		} catch(PDOException $ex) {
+			return false;
+		}
+	}
+	
 	function addVideo($providerVideoID, $songID, $instrumentID){
 		require_once '../app/core/Database.php';
 		

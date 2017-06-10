@@ -194,7 +194,7 @@ iframe {
 	color: #FFF;
 }
 
-#txtSongPlaying{
+.txtSongChannelName{
 	font-size: 15px;
 	color: #FFF;
 }
@@ -228,4 +228,14 @@ iframe {
 #playlist{
 	position:fixed;
 	left:0;top:80px;
+}
+
+#playlist-title{
+	font-size: 20px;
+	color: #FFF;
+}
+
+#text-no-videos-yet{
+	font-size: 15px;
+	color: lightblue;
 }
